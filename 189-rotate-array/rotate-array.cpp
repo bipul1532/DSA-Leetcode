@@ -2,6 +2,9 @@ class Solution {
 public:
     void rotate(vector<int>& arr, int d) {
         int n = arr.size();
+        if(n==0){
+            return ;
+        }
         d = d % n;  // Adjust d if it's larger than the size of the array
         vector<int> temp(d);
 
