@@ -6,9 +6,10 @@ public:
         long long sum=0;
         for(int i=0;i<n;i++){
             sum=sum+nums[i];
-            if(sum>maxisum){
-                maxisum=sum;
-            }
+            // if(sum>maxisum){
+            //     maxisum=sum;
+            // }
+            maxisum=max(maxisum,sum);
             if(sum<0){
                 sum=0;
             }
