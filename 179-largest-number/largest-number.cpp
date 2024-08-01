@@ -1,7 +1,8 @@
 class Solution {
 public:
+    //custom comperator to sort the function in ab or ba
     static bool check(string &a,string &b){
-        return (a+b)>=(b+a);
+        return (a+b)>(b+a);
     }
     string largestNumber(vector<int>& nums) {
         int n=nums.size();
