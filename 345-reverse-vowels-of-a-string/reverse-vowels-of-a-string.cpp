@@ -15,7 +15,7 @@ public:
                 swap(s[i],s[j]);
                 i++;
                 j--;
-            }else if(!isvowel(s[i])){
+            }else if(isvowel(s[i])==0){
                 i++;
             }else{
                 j--;
