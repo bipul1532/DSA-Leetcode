@@ -1,14 +1,9 @@
 class Solution {
 public:
     bool isIsomorphic(string s, string t) {
-         int hash[128];
-        int istcharmapped[128];
+        vector<int>hash(128,-1);
+        vector<int>istcharmapped(128,-1);
 
-        // Proper initialization of the arrays
-        for (int i = 0; i < 128; ++i) {
-            hash[i] = -1;
-            istcharmapped[i] = -1;
-        }
         for(int i=0;i<s.size();i++){
             if(hash[s[i]]!=istcharmapped[t[i]]){
                 return false;
