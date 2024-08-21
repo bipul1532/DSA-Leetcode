@@ -1,12 +1,12 @@
 class Solution {
 public:
     string removeOccurrences(string s, string part) {
-        //find() ->> to finding index
-        //erease() -> to erase
-        int position=s.find(part);
-        while(position!=string::npos){
-            s.erase(position,part.length());
-            position=s.find(part);
+        int n=s.size();
+        int p=part.size();
+        int pos=s.find(part);
+        while(pos!=string::npos){
+            s.erase(pos,p);
+            pos=s.find(part);
         }
         return s;
     }
