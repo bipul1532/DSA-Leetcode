@@ -1,8 +1,8 @@
 class Solution {
 public:
     vector<int> plusOne(vector<int>& digits) {
-        int n=digits.size()-1;
-        for(int i=n;i>=0;i--){
+        int n=digits.size();
+        for(int i=n-1;i>=0;i--){
             if(digits[i]!=9){
                 digits[i]++;
                 return digits;
@@ -11,7 +11,7 @@ public:
             }
         }
         if(digits[0]==0){
-            vector<int>ans(n+2,0);
+            vector<int>ans(n+1,0);
             ans[0]=1;
             return ans;
         }
