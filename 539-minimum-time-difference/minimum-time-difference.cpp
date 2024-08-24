@@ -3,21 +3,19 @@ public:
     int findMinDifference(vector<string>& timePoints) {
         vector<int>minutes;
         for(int i=0;i<timePoints.size();i++){
-            int hours=stoi(timePoints[i].substr(0,2));
             int min=stoi(timePoints[i].substr(3,2));
-            int totalminutes=hours*60+min;
+            int hour=stoi(timePoints[i].substr(0,2));
+            int totalminutes=hour*60+min;
             minutes.push_back(totalminutes);
         }
-        //step 2:-----
         sort(minutes.begin(),minutes.end());
-        int mini=INT_MAX;
-        for(int i=0;i<minutes.size()-1;i++){
-           int minm= minutes[i+1]-minutes[i];
-           mini=min(mini,minm);
+        int mind=INT_MAX;
+        for(int i=1;i<minutes.size();i++){
+            int mini=minutes[i]-minutes[i-1];
+            mind=min(mini,mind);
         }
-        int n=minutes.size();
-        int lastdiff=(minutes[0]+1440)-minutes[n-1];
-        mini=min(lastdiff,mini);
-        return mini;
+        int lastdiff=(minutes[0]+1440)-minutes[minutes.size()-1];
+        mind=min(mind,lastdiff);
+        return mind;
     }
 };
