@@ -1,19 +1,18 @@
 class Solution {
 public:
     bool isIsomorphic(string s, string t) {
-        vector<int>hash(128,-1);
-        vector<int>istcharmapped(128,-1);
-
+        unordered_map<char, char>mp1;
+        unordered_map<char, char>mp2;
         for(int i=0;i<s.size();i++){
-            if(hash[s[i]]!=istcharmapped[t[i]]){
+            char ch1=s[i];
+            char ch2=t[i];
+            if(mp1.find(ch1) != mp1.end() && mp1[ch1]!=ch2 || 
+            mp2.find(ch2) != mp2.end() && mp2[ch2]!=ch1){
                 return false;
             }
-            else{
-                hash[s[i]]=istcharmapped[t[i]]=i;
-
-            }
+            mp1[ch1]=ch2;
+            mp2[ch2]=ch1;
         }
-        
         return true;
     }
 };
