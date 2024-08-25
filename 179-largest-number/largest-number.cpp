@@ -1,33 +1,22 @@
 class Solution {
 public:
-    //custom comperator to sort the function in ab or ba
-    static bool check(string &a,string &b){
-        return (a+b)>(b+a);
+    static bool mycomp(string a,string b){
+        string t=a+b;
+        string s=b+a;
+        return t>s;
     }
     string largestNumber(vector<int>& nums) {
-        int n=nums.size();
-        int count=0;
-        for(int i=0;i<n;i++){
-            if(nums[i]==0){
-                count++;
-            }
-        }
-        if(count==nums.size()){
-            return "0";
-        }
-
-        //take a string vector to store string 
-        vector<string>s(nums.size(),"");
-
+        vector<string>str;
         for(int i=0;i<nums.size();i++){
-            s[i]=to_string(nums[i]);
+            str.push_back(to_string(nums[i]));
         }
-        //we will sort our string array based on custom comperator
-        sort(s.begin(),s.end(),check);
-        //append the ans of sorted array in answer variable
+        //call custom comperator
+        sort(str.begin(),str.end(),mycomp);
+        if(str[0]=="0") return "0";
+        //add string and return in answer variable
         string ans="";
-        for(int i=0;i<s.size();i++){
-            ans=ans+s[i];
+        for(auto s:str){
+            ans+=s;
         }
         return ans;
     }
