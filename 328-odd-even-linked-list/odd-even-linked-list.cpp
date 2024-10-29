@@ -14,17 +14,28 @@ public:
         if(head==nullptr || head->next==nullptr){
             return head;
         }
-        ListNode* odd=head;
-        ListNode* even=head->next;
-        ListNode* evenHead=head->next;
-        while(even!=nullptr && even->next!=nullptr){
-            odd->next=odd->next->next;
-            even->next=even->next->next;
-
-            odd=odd->next;
-            even=even->next;
+        ListNode* temp=head;
+        vector<int>arr;
+        while(temp!=nullptr && temp->next!=nullptr){
+            arr.push_back(temp->val);
+            temp=temp->next->next;
         }
-        odd->next=evenHead;
+        if(temp) arr.push_back(temp->val);
+
+        temp=head->next;
+        while(temp!=nullptr && temp->next!=nullptr){
+            arr.push_back(temp->val);
+            temp=temp->next->next;
+        }
+        if(temp) arr.push_back(temp->val);
+
+        temp=head;
+        int i=0;
+        while(temp!=nullptr){
+            temp->val=arr[i];
+            i++;
+            temp=temp->next;
+        }
         return head;
     }
 };
