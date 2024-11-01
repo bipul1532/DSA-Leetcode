@@ -11,25 +11,18 @@
 class Solution {
 public:
     ListNode* deleteMiddle(ListNode* head) {
+        //I'll solve this question by using hare and tortoise algorithm
         if(head==NULL || head->next==NULL) return NULL;
-        int cnt = 0;
-        ListNode* temp = head;
-        while (temp != NULL) {
-            cnt++;
-            temp = temp->next;
+        ListNode* slow=head;
+        ListNode* fast=head;
+        fast=fast->next->next; //slow skip by one step
+        while(fast!=NULL && fast->next!=NULL){
+            slow=slow->next;
+            fast=fast->next->next;
         }
-        int n = cnt / 2;
-        temp = head;
-        while (temp != NULL) {
-            n--;
-            if (n == 0) {
-                ListNode* delNode = temp->next;
-                temp->next = temp->next->next;
-                delete (delNode);
-                break;
-            }
-            temp = temp->next;
-        }
+        ListNode* delNode=slow->next;
+        slow->next=slow->next->next;
+        delete(delNode);
         return head;
     }
 };
